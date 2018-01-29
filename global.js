@@ -1,4 +1,5 @@
 const debug = require("debug");
+const JSON5 = require("json5");
 
 let APP_NAME = "";
 
@@ -105,10 +106,10 @@ function loadConfig() {
         const fs = require("fs");
 
         const CONFIG_DIR = getConfigDir();
-        const CONFIG_FILE = CONFIG_DIR + "/config.json";
+        const CONFIG_FILE = CONFIG_DIR + "/config.json5";
         try {
             if (fs.existsSync(CONFIG_FILE)) {
-                let sets = JSON.parse(fs.readFileSync(CONFIG_FILE, "utf8"));
+                let sets = JSON5.parse(fs.readFileSync(CONFIG_FILE, "utf8"));
                 for (var k in sets) CONFIG[k] = sets[k];
             }
         } catch (e) {

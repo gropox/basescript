@@ -1,0 +1,52 @@
+{
+    websocket : "ws://localhost:9090",
+    chain_id : "5876894a41e6361bde2e73278f07340f2eb8b41c2facd29099de9deef6cdb679",
+    prefix : "GLS",
+
+    initminer : {
+        account: "cyberfounder",
+        keys: {
+            owner : [
+                ["5JVFFWRLwz6JoP9kguuRFfytToGU6cLgBVTL9t6NB3D3BQLbUBS", 1]
+            ]
+        }
+    },
+    user : {
+        keys: {
+            owner: [
+                ["5JMUYvoLdT6LKqQdpU5gWQ8S9PqPPy8mDCoN9o6BYktdENo3sGa", 1]
+            ],
+            active: [
+                ["5JMUYvoLdT6LKqQdpU5gWQ8S9PqPPy8mDCoN9o6BYktdENo3sGa", 1]
+            ],
+            posting: [
+                ["5JMUYvoLdT6LKqQdpU5gWQ8S9PqPPy8mDCoN9o6BYktdENo3sGa", 1]
+            ],
+            memo: "5JMUYvoLdT6LKqQdpU5gWQ8S9PqPPy8mDCoN9o6BYktdENo3sGa"
+        }
+    }
+
+    /* Распределение пользователей. 
+    За основу взята статистика arcange, только активные пользователи
+        46	    2
+        221	    10
+        701	    31
+        2621	118
+        9768	439
+        13357	600
+
+        Создадим 600 пользователей, что бы получить как минимум 2 кита
+    */
+    ,user_distribution : {
+        fish : 439,
+        minnow : 118,
+        dolphin : 31,
+        orca : 10,
+        whale : 2
+    }
+
+    ,posting : {
+        interval : 3600 //секунд
+    }
+
+}

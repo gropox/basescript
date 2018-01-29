@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/gropox/basescript/issues"
   },
-  "homepage": "https://github.com/gropox/basescript#readme"
+  "homepage": "https://github.com/gropox/basescript#readme",
+  "dependencies": {
+    "json5": "^0.5.1"
+  }
 }
