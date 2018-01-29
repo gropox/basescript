@@ -69,7 +69,7 @@ module.exports.enableDebug = function() {
     updateDebugNamespace();
 }
 
-module.exports.initApp = function(appName) {
+module.exports.initApp = function(appName, config) {
     setAppName(appName);
 
     for(let val of process.argv) {
@@ -87,7 +87,7 @@ module.exports.initApp = function(appName) {
         }
     }
     updateDebugNamespace();
-    loadConfig();
+    loadConfig(config);
 }
 
 let CONFIG = {};
@@ -101,12 +101,17 @@ function getConfigDir() {
     }
 }
 
-function loadConfig() {
+function loadConfig(configFileName) {
+    const CONFIG_DIR = getConfigDir();
+    let CONFIG_FILE = CONFIG_DIR + "/config.json5";
+
+    if (configFileName) {
+        CONFIG_FILE = configFileName;
+    }
+
     try {
         const fs = require("fs");
 
-        const CONFIG_DIR = getConfigDir();
-        const CONFIG_FILE = CONFIG_DIR + "/config.json5";
         try {
             if (fs.existsSync(CONFIG_FILE)) {
                 let sets = JSON5.parse(fs.readFileSync(CONFIG_FILE, "utf8"));
