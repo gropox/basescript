@@ -103,7 +103,7 @@ function getConfigDir() {
 
 function loadConfig(configFileName) {
     const CONFIG_DIR = getConfigDir();
-    let CONFIG_FILE = CONFIG_DIR + "/config.json5";
+    let CONFIG_FILE = CONFIG_DIR + "/config.json";
 
     if (configFileName) {
         CONFIG_FILE = configFileName;
@@ -113,6 +113,9 @@ function loadConfig(configFileName) {
         const fs = require("fs");
 
         try {
+            if (!fs.existsSync(CONFIG_FILE)) {
+                CONFIG_FILE += "5"; //try config.json5
+            }
             if (fs.existsSync(CONFIG_FILE)) {
                 let sets = JSON5.parse(fs.readFileSync(CONFIG_FILE, "utf8"));
                 for (var k in sets) CONFIG[k] = sets[k];
